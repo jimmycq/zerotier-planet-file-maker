@@ -14,18 +14,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-
-    - name: Initialization environment
-      run: |
-        yum install wget gcc gcc-c++ git -y
-        yum install json-devel -y
-
+      
     - name: Clone Zerotier source code
       working-directory: /workdir
       run: |
         df -hT $PWD
         git clone $REPO_URL zerotier
         ln -sf /workdir/zerotier $GITHUB_WORKSPACE/zerotier
+        
+        
     - name: Read IDENTITY_FILE
       run: |
         [ -e $IDENTITY_FILE ] && mv $IDENTITY_FILE zerotier/identity.public
@@ -36,3 +33,5 @@ jobs:
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+    
+    
