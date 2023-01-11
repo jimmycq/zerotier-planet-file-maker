@@ -13,19 +13,7 @@ jobs:
     container: docker.io/centos:7.6.1810
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
-      
-    - name: Clone Zerotier source code
-      working-directory: /workdir
-      run: |
-        df -hT $PWD
-        git clone $REPO_URL zerotier
-        ln -sf /workdir/zerotier $GITHUB_WORKSPACE/zerotier
-        
-        
-    - name: Read IDENTITY_FILE
-      run: |
-        [ -e $IDENTITY_FILE ] && mv $IDENTITY_FILE zerotier/identity.public
+      uses: actions/checkout@v2    
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
