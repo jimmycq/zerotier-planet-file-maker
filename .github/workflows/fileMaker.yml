@@ -1,5 +1,7 @@
 name: File Maker
 
+on: push
+
 env:
   REPO_URL: https://github.com/zerotier/ZeroTierOne/tree/dev
   IDENTITY_FILE: identity.public
